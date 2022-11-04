@@ -1,6 +1,8 @@
 /* create an array of possible choices */
 const CHOICES = ["rock", "paper", "scissors"];
 
+console.log(game()); //play five rounds
+
 
 /* create function to let computer chooses random valid choice */
 function getComputerChoice(){
@@ -68,7 +70,7 @@ function game(){
 
     // play five rounds
     for(let i = 0; i < 5; i++){
-        let playerChoice = "paper";
+        let playerChoice = getPlayerChoice();
         let computerChoice = getComputerChoice();
 
         let roundResult = playRound(playerChoice, computerChoice);
@@ -94,4 +96,22 @@ function game(){
 
 }
 
-game();
+// create a function to prompt player for valid input
+function getPlayerChoice(){
+    let choice = prompt("What's your choice?");
+
+    while(!isValid(choice)){
+        choice = prompt("What's your choice?");
+    }
+
+    return choice;
+}
+
+// create fuction to make sure the validity of user input
+function isValid(choice){    
+    if(CHOICES.includes(choice.toLowerCase())){
+        return true;
+    }
+    return false;
+}
+

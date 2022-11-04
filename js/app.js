@@ -60,7 +60,38 @@ function roundWinner(winner, player, computer){
     }
 }
 
-const playerChoice = "PAper";
-const computerChoice = getComputerChoice();
+// create a function to play five rounds
+function game(){
+    // keep scores of player and computer
+    let playerScore = 0;
+    let computerScore = 0;
 
-console.log(playRound(playerChoice, computerChoice));
+    // play five rounds
+    for(let i = 0; i < 5; i++){
+        let playerChoice = "paper";
+        let computerChoice = getComputerChoice();
+
+        let roundResult = playRound(playerChoice, computerChoice);
+        
+        if(roundResult > 0){
+            playerScore++;
+        }
+        else if(roundResult < 0){
+            computerScore++;
+        }
+    }
+
+    // decide the winner of the whole game
+    if (playerScore > computerScore){
+        return "Congrats! You won against the computer.";
+    }
+    else if(playerScore < computerScore){
+        return "Computer won this game!";
+    }
+    else{
+        return "There is a tie!";
+    }
+
+}
+
+game();

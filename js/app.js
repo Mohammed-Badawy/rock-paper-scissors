@@ -1,7 +1,20 @@
 /* create an array of possible choices */
 const CHOICES = ["rock", "paper", "scissors"];
 
-console.log(game()); //play five rounds
+// add some references to documents elements
+const initialContainer = document.querySelector(".initial-container");
+const gameContainer = document.querySelector(".game-container");
+const rockBtn = document.querySelector(".rock-btn");
+const paperBtn = document.querySelector(".paper-btn");
+const scissorsBtn = document.querySelector(".scissors-btn");
+const playerchoice = document.querySelector(".player-choice");
+const computerChoice = document.querySelector(".computer-choice");
+const result = document.querySelector(".result");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+
+
+
 
 
 /* create function to let computer chooses random valid choice */

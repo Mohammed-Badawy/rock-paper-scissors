@@ -1,6 +1,13 @@
 /* create an array of possible choices */
 const CHOICES = ["rock", "paper", "scissors"];
 
+// add an object sontaining classes
+const classes = {
+    subContainer: "sub-container",
+    subTitle: "subtitle",
+    stratButton: "start-btn",
+};
+
 // add some references to documents elements
 const initialContainer = document.querySelector(".initial-container");
 const gameContainer = document.querySelector(".game-container");
@@ -14,7 +21,8 @@ const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 
 
-
+// play game steps
+displayMessage("Would you like to play a game?", "Start Game");
 
 
 /* create function to let computer chooses random valid choice */
@@ -128,3 +136,34 @@ function isValid(choice){
     return false;
 }
 
+// display startup messages
+function displayMessage(msg, btnText){
+
+    gameContainer.style.visibility = "hidden";
+
+    const tmpDiv = document.createElement("div");
+    const message = document.createElement("h2");
+    const stratBtn = document.createElement("button");
+
+    tmpDiv.className = classes.subContainer;
+
+    message.className = classes.subTitle;
+    message.textContent = msg;
+
+    stratBtn.className = classes.stratButton;
+    stratBtn.textContent = btnText;
+
+    tmpDiv.appendChild(message);
+    tmpDiv.appendChild(stratBtn);
+
+    initialContainer.appendChild(tmpDiv);
+
+    stratBtn.addEventListener("click", startGame);
+}
+
+
+// add function to initialize the game interface
+function startGame(){
+    gameContainer.style.visibility = "visible";
+    initialContainer.removeChild(initialContainer.firstElementChild);
+}

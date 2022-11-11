@@ -102,3 +102,26 @@ body{
     transform:scale(1.6);
     cursor: pointer;
 }
+
+.subtitle{
+    font-family: "Pacifico";
+    font-size: 2rem;
+}
+
+.start-btn{
+    background-color: #232ED1;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: "stick no bills", "roboto", sans-serif;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 30px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.start-btn:hover{
+    background-color: #464fca;
+}

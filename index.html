@@ -7,9 +7,48 @@
     <meta name="author" content="Mohammed Badawy">
     <meta name="desciption" content="rock paper scissors game project">
     <script src="js/app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@1,400;1,700&family=Stick+No+Bills:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Rock Paper Scissors Game</title>
   </head>
   <body>
+    <div class="header">
+      <h1 class="title">Rock Paper Scissors Game</h1>
+    </div>
 
+    <!-- Initializer and final result  container-->
+    <div class="initial-container"></div>
+
+    <!-- Game container -->
+    <div class="game-container">
+      <div class="players-container">
+        <div class="player-container">
+          <h2 class="player-title">Player</h2>
+          <p class="player-choice">?</p>
+          <h3 class="player-score">0</h3>
+        </div>
+        <div class="computer-container">
+          <h2 class="computer-title">computer</h2>
+          <p class="computer-choice">?</p>
+          <h3 class="computer-score">0</h3>
+        </div>
+      </div>
+      <div class="result-container">
+        <p class="result">Result</p>
+      </div>
+      <div class="btn-container">
+        <div>
+          <button class="rock-btn" value="rock">✊</button>
+        </div>
+        <div>
+          <button class="paper-btn" value="paper">✋</button>
+        </div>
+        <div>
+          <button class="scissors-btn" value="scissors">✌</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

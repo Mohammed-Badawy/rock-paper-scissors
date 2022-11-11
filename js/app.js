@@ -226,6 +226,7 @@ function declareWinner(winner){
     startBtn.addEventListener("click", startNewGame); 
 }
 
+// start a new game
 function startNewGame(){
     plScore = 0;
     comScore = 0;

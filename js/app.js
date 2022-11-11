@@ -20,6 +20,8 @@ const result = document.querySelector(".result");
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 
+let plScore = 0;
+let comScore = 0;
 
 // play game steps
 displayMessage("Would you like to play a game?", "Start Game");
@@ -166,4 +168,19 @@ function displayMessage(msg, btnText){
 function startGame(){
     gameContainer.style.visibility = "visible";
     initialContainer.removeChild(initialContainer.firstElementChild);
+}
+
+// draw shapes
+function drawShape(choice){
+    switch (choice){
+        case "rock": 
+            return "✊";
+            break;
+        case "paper":
+            return "✋";
+            break;
+        case "scissors":
+            return "✌";
+            break;
+    }
 }

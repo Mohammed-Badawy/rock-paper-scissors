@@ -6,6 +6,8 @@ const classes = {
     subContainer: "sub-container",
     subTitle: "subtitle",
     stratButton: "start-btn",
+    playerWon: "player-won",
+    computerWon: "computer-won",
 };
 
 // add some references to documents elements
@@ -26,6 +28,10 @@ let comScore = 0;
 // play game steps
 displayMessage("Would you like to play a game?", "Start Game");
 
+// add eventlistener to get player choice
+rockBtn.addEventListener("click", game);
+paperBtn.addEventListener("click", game);
+scissorsBtn.addEventListener("click", game);
 
 /* create function to let computer chooses random valid choice */
 function getComputerChoice(){
@@ -64,7 +70,6 @@ function playRound(playerSelection, computerSelection){
         playerWin = -1;
     }
 
-    console.log(roundWinner(playerWin, playerSelection, computerSelection));
     return playerWin;
 
 }
@@ -86,37 +91,42 @@ function roundWinner(winner, player, computer){
 }
 
 // create a function to play five rounds
-function game(){
-    // keep scores of player and computer
-    let playerScore = 0;
-    let computerScore = 0;
+function game(e){
+    let roundResult = null;
+    let plchoice = e.srcElement.value;
+    let comChoice = getComputerChoice();
 
-    // play five rounds
-    for(let i = 0; i < 5; i++){
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
+    // Check if players score less than 5
+    if(plScore < 5 && comScore < 5){
+        playerchoice.textContent = drawShape(plchoice);
+        computerChoice.textContent = drawShape(comChoice);
 
-        let roundResult = playRound(playerChoice, computerChoice);
-        
+        //play around and get the result
+        roundResult = playRound(plchoice, comChoice);
+
+        // check who is the winner of the round and update score
         if(roundResult > 0){
-            playerScore++;
+            plScore++;
+            result.textContent = roundWinner(roundResult, plchoice, comChoice);
+            playerScore.textContent = plScore;
         }
         else if(roundResult < 0){
-            computerScore++;
+            comScore++;
+            result.textContent = roundWinner(roundResult, plchoice, comChoice);
+            computerScore.textContent = comScore;
+        }
+        else{
+            result.textContent = roundWinner(roundResult, plchoice, comChoice);
+        }
+
+        // check if there is a winner of the whole game
+        if(plScore === 5){
+            declareWinner("player");
+        }
+        else if(comScore === 5){
+            declareWinner("computer");
         }
     }
-
-    // decide the winner of the whole game
-    if (playerScore > computerScore){
-        return "Congrats! You won against the computer.";
-    }
-    else if(playerScore < computerScore){
-        return "Computer won this game!";
-    }
-    else{
-        return "There is a tie!";
-    }
-
 }
 
 // create a function to prompt player for valid input
@@ -183,4 +193,39 @@ function drawShape(choice){
             return "✌";
             break;
     }
+}
+
+// declare winner
+function declareWinner(winner){
+    gameContainer.style.visibility = "hidden";
+    
+    const tmpDiv = document.createElement("div");
+    const message = document.createElement("h2");
+    const startBtn = document.createElement("button");
+
+    tmpDiv.className = classes.subContainer;
+
+    if(winner === "player"){
+    message.className = classes.playerWon;
+    message.textContent = "You Won the game";
+    }
+    else{
+    message.className = classes.computerWon;
+    message.textContent = "Sorry, it's not your lucky day!"
+    }
+
+    startBtn.className = classes.stratButton;
+    startBtn.textContent = "New Game";
+
+    tmpDiv.appendChild(message);
+    tmpDiv.appendChild(startBtn);
+
+    initialContainer.appendChild(tmpDiv);
+    initialContainer.style.visibility = "visible";
+
+    startBtn.addEventListener("click", startNewGame); 
+}
+
+function startNewGame(){
+
 }

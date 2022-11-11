@@ -125,3 +125,18 @@ body{
 .start-btn:hover{
     background-color: #464fca;
 }
+
+
+.player-won,
+.computer-won{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.player-won {
+    color: green;
+}
+
+.computer-won{
+    color: red;
+}

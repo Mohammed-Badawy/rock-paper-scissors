@@ -227,5 +227,13 @@ function declareWinner(winner){
 }
 
 function startNewGame(){
-
+    plScore = 0;
+    comScore = 0;
+    playerchoice.textContent = "?";
+    computerChoice.textContent = "?";
+    playerScore.textContent = plScore;
+    computerScore.textContent = comScore;
+    result.textContent = "result";
+    gameContainer.style.visibility = "visible";
+    initialContainer.removeChild(initialContainer.firstElementChild);
 }
